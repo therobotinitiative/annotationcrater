@@ -1,0 +1,66 @@
+group = "com.orbital3d"
+version = "1.0.0-SNAPSHOT"
+
+plugins {
+    `java-library`
+    `checkstyle`
+    `jacoco`
+  	`maven-publish`
+	id("com.diffplug.spotless") version("8.4.0")
+}
+
+checkstyle {
+	configFile = File("${project.rootDir}/checkstyle.xml")
+}
+
+spotless {
+	java {
+		googleJavaFormat()
+		target("src/main/java/**/*.java", "src/test/java/**/*.java")
+		trimTrailingWhitespace()
+		endWithNewline()
+	}
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation("com.orbital3d:domain:0.0.2-SNAPSHOT")
+
+    // Use JUnit Jupiter for testing.
+	testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+	testImplementation("org.mockito:mockito-core:5.5.0")
+	testImplementation("com.google.testing.compile:compile-testing:0.23.0")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.10.2")
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+	withSourcesJar()
+	withJavadocJar()
+}
+
+// Ensure code is formatted before build
+tasks.named("build") {
+	dependsOn("spotlessApply")
+}
+
+tasks.named<Test>("test") {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
+}
