@@ -1,5 +1,5 @@
 group = "com.orbital3d"
-version = "1.0.0-SNAPSHOT"
+version = "1.0"
 
 plugins {
     `java-library`
@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.orbital3d:domain:0.0.2-SNAPSHOT")
+    implementation("com.orbital3d:domain:1.0-RELEASE")
 
     // Use JUnit Jupiter for testing.
 	testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
