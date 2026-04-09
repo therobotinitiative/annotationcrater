@@ -7,6 +7,7 @@ plugins {
     `jacoco`
   	`maven-publish`
 	id("com.diffplug.spotless") version("8.4.0")
+	id("org.owasp.dependencycheck") version "12.2.0"
 }
 
 checkstyle {
@@ -62,5 +63,18 @@ publishing {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
         }
+    }
+}
+
+// Configure OWASP Dependency Check tasks with different CVSS thresholds for different build types
+tasks.register("dependencyCheckRelease", org.owasp.dependencycheck.gradle.tasks.Analyze::class.java) {
+    dependencyCheck {
+        failBuildOnCVSS.set(9.0f)
+    }
+}
+
+tasks.register("dependencyCheckCI", org.owasp.dependencycheck.gradle.tasks.Analyze::class.java) {
+    dependencyCheck {
+        failBuildOnCVSS.set(3.0f)
     }
 }
