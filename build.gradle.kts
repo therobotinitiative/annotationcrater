@@ -1,4 +1,4 @@
-group = "com.orbital3d"
+group = "org.codebreaker"
 version = "1.0"
 
 plugins {
@@ -30,7 +30,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.orbital3d:domain:1.0-RELEASE")
+    implementation("org.codebreaker:domain:1.0-RELEASE")
 
     // Use JUnit Jupiter for testing.
 	testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")

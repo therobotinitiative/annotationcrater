@@ -1,6 +1,6 @@
 
-import com.orbital3d.domain.annotation.DomainEntityMarker;
-import com.orbital3d.domain.entity.DomainEntity;
+import org.codebreaker.domain.annotation.DomainEntityMarker;
+import org.codebreaker.domain.entity.DomainEntity;
 
 @DomainEntityMarker
 public class FailureEntityOne implements DomainEntity<Long> {

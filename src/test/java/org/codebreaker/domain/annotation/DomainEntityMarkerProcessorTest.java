@@ -1,20 +1,19 @@
-package com.orbital3d.domain.annotation;
-
-import java.util.Collections;
-
-import javax.annotation.processing.RoundEnvironment;
-import javax.annotation.processing.SupportedAnnotationTypes;
-import javax.annotation.processing.SupportedSourceVersion;
+package org.codebreaker.domain.annotation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import java.util.Collections;
+import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.SupportedSourceVersion;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
@@ -35,7 +34,7 @@ public class DomainEntityMarkerProcessorTest {
     assertTrue(processorClass.isAnnotationPresent(SupportedAnnotationTypes.class));
     assertTrue(processorClass.isAnnotationPresent(SupportedSourceVersion.class));
     assertEquals(
-        "com.orbital3d.domain.annotation.DomainEntityMarker",
+        "org.codebreaker.domain.annotation.DomainEntityMarker",
         processorClass.getAnnotation(SupportedAnnotationTypes.class).value()[0]);
   }
 

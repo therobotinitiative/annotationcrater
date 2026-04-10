@@ -1,4 +1,4 @@
-package com.orbital3d.domain.annotation;
+package org.codebreaker.domain.annotation;
 
 import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
@@ -13,7 +13,7 @@ import javax.lang.model.element.TypeElement;
 /**
  * Annotation processor that checks if classes annotated with @DomainEntityMarker have an id field.
  */
-@SupportedAnnotationTypes("com.orbital3d.domain.annotation.DomainEntityMarker")
+@SupportedAnnotationTypes("org.codebreaker.domain.annotation.DomainEntityMarker")
 @SupportedSourceVersion(SourceVersion.RELEASE_21)
 public class DomainEntityMarkerProcessor extends AbstractProcessor {
 

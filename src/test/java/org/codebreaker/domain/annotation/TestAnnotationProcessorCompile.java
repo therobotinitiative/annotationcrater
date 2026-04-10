@@ -1,4 +1,4 @@
-package com.orbital3d.domain.annotation;
+package org.codebreaker.domain.annotation;
 
 import static com.google.testing.compile.Compiler.javac;
 import static org.junit.jupiter.api.Assertions.assertEquals;
