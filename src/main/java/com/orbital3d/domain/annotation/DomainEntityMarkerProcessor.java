@@ -22,6 +22,10 @@ public class DomainEntityMarkerProcessor extends AbstractProcessor {
 
   @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+    // Processing over
+    if (roundEnv.processingOver()) {
+      return false;
+    }
     for (Element annotatedElement : roundEnv.getElementsAnnotatedWith(DomainEntityMarker.class)) {
       if (annotatedElement.getKind() != ElementKind.CLASS) {
         continue;

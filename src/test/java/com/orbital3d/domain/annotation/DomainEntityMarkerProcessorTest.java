@@ -1,18 +1,20 @@
 package com.orbital3d.domain.annotation;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.verify;
-
 import java.util.Collections;
+
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
@@ -49,5 +51,12 @@ public class DomainEntityMarkerProcessorTest {
   @Test
   void testNullPointException() {
     assertThrows(NullPointerException.class, () -> processor.process(null, null));
+  }
+
+  @Test
+  void returnFalseWhenprocessingOver() {
+    when(mockRoundEnvironment.processingOver()).thenReturn(true);
+    assert !processor.process(Collections.EMPTY_SET, mockRoundEnvironment);
+    verify(mockRoundEnvironment, atLeastOnce()).processingOver();
   }
 }
