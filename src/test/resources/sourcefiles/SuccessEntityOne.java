@@ -1,4 +1,4 @@
-//package org.codebreaker.test.entity.success;
+package sourcefiles;
 
 import org.codebreaker.domain.annotation.DomainEntityId;
 import org.codebreaker.domain.annotation.DomainEntityMarker;
